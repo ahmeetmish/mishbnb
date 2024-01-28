@@ -6,7 +6,10 @@ import MenuItem from "./MenuItem"
 import { BiMenu } from "react-icons/bi"
 import { useCallback, useState } from "react"
 
+import useRegisterModal from "@/app/hooks/useRegisterModal"
+
 export default function UserMenu() {
+  const registerModal = useRegisterModal()
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = useCallback(() => {
@@ -30,7 +33,7 @@ export default function UserMenu() {
         <div className="absolute w-[40vw] md:w-3/4 rounded-xl text-sm shadow-md bg-white overflow-hidden right-0 top-12">
           <div className="flex flex-col cursor-pointer">
             <>
-              <MenuItem onClick={() => {}} label='Kaydolun' />
+              <MenuItem onClick={registerModal.onOpen} label='Kaydolun' />
               <MenuItem onClick={() => {}} label='Oturum açın' />
             </>
           </div>
