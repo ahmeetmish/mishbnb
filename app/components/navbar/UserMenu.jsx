@@ -3,13 +3,17 @@
 import Avatar from "../Avatar"
 import MenuItem from "./MenuItem"
 
+import toast from "react-hot-toast"
 import { BiMenu } from "react-icons/bi"
+import { signOut } from "next-auth/react"
 import { useCallback, useState } from "react"
 
+import useLoginModal from "@/app/hooks/useLoginModal"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 
-export default function UserMenu() {
+export default function UserMenu({ currentUser }) {
   const registerModal = useRegisterModal()
+  const loginModal = useLoginModal()
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = useCallback(() => {
@@ -32,10 +36,24 @@ export default function UserMenu() {
       {isOpen && (
         <div className="absolute w-[40vw] md:w-3/4 rounded-xl text-sm shadow-md bg-white overflow-hidden right-0 top-12">
           <div className="flex flex-col cursor-pointer">
-            <>
-              <MenuItem onClick={registerModal.onOpen} label='Kaydolun' />
-              <MenuItem onClick={() => {}} label='Oturum açın' />
-            </>
+            {currentUser ? (
+              <>
+                <MenuItem onClick={() => {}} label='Seyahetler' />
+                <MenuItem onClick={() => {}} label='Favoriler' />
+                <MenuItem onClick={() => {}} label='Mülkler' />
+                <MenuItem onClick={() => {}} label='Rezervasyonlar' />
+                <hr />
+                <MenuItem onClick={() => {}} label='Evinizi Mishbnb&apos;ye taşıyınız' />
+                <hr />
+                <MenuItem onClick={() => signOut().then(() => {toast.success('Çıkış yapıldı!')})} label='Oturumu kapatın' />
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={registerModal.onOpen} label='Kaydolun' />
+                <MenuItem onClick={loginModal.onOpen} label='Oturum açın' />
+              </>
+            )}
+            
           </div>
         </div>
       )}

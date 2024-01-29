@@ -7,7 +7,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 
 import prisma from '@/app/libs/prismadb'
 
-export const AuthOptions = {
+export const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GooglePrivider({
@@ -58,4 +58,4 @@ export const AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 }
 
-export default NextAuth(AuthOptions)
+export default NextAuth(authOptions)
