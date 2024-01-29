@@ -7,8 +7,6 @@ import UserMenu from "./UserMenu"
 import Search from "./Search"
 
 export default function Navbar({ currentUser }) {
-  console.log(currentUser)
-
   return (
     <div className="fixed w-full bg-white z-100 shadow-sm">
       <div className="py-4 border-b-[1px]">
