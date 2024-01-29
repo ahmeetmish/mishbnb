@@ -10,6 +10,7 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc"
 import { toast } from "react-hot-toast"
+import { signIn } from "next-auth/react"
 
 export default function RegisterModal() {
   const registerModal = useRegisterModal()
@@ -54,7 +55,7 @@ export default function RegisterModal() {
   const footerContent = (
     <div className="gap-4 flex flex-col mt-3">
       <hr />
-      <Button onClick={() => {}} outline label='Google ile devam et' Icon={FcGoogle} />
+      <Button onClick={() => signIn('google')} outline label='Google ile devam et' Icon={FcGoogle} />
       <div className="font-light text-center mt-4 text-neutral-500">
         <div className="gap-2 flex flex-row items-center justify-center text-center">
           <div>Zaten bir hesabın var mı?</div>

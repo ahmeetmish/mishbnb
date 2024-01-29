@@ -29,7 +29,7 @@ export default function UserMenu({ currentUser }) {
         <div onClick={handleToggle} className="gap-3 flex flex-row items-center rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 cursor-pointer hover:shadow-lg transition">
           <BiMenu size={18} />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
