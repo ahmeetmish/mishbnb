@@ -13,7 +13,6 @@ import { FcGoogle } from "react-icons/fc"
 import { toast } from "react-hot-toast"
 
 import useLoginModal from "@/app/hooks/useLoginModal"
-import useRegisterModal from "@/app/hooks/useRegisterModal"
 
 export default function LoginModal() {
   const router = useRouter()
@@ -59,10 +58,10 @@ export default function LoginModal() {
   const footerContent = (
     <div className="gap-4 flex flex-col mt-3">
       <hr />
-      <Button onClick={() => {}} outline label='Google ile devam et' Icon={FcGoogle} />
+      <Button onClick={() => signIn('google')} outline label='Google ile devam et' Icon={FcGoogle} />
       <div className="font-light text-center mt-4 text-neutral-500">
         <div className="gap-2 flex flex-row items-center justify-center text-center">
-          <div>Zaten bir hesabın var mı?</div>
+          <div>Hesabın yok mu?</div>
           <div onClick={loginModal.onClose} className="font-medium text-neutral-800 hover:underline cursor-pointer">Giriş Yap</div>
         </div>
       </div>

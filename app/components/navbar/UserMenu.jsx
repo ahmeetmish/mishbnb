@@ -21,7 +21,7 @@ export default function UserMenu({ currentUser }) {
   }, [])
 
   return (
-    <div className="relative">
+    <div className="flex relative z-30">
       <div className="gap-3 flex flex-row items-center">
         <div onClick={() => {}} className="hidden md:block font-medium text-sm py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
           Evinizi Mishbnb'ye taşıyın

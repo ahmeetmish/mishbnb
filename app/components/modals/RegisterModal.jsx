@@ -1,7 +1,6 @@
 'use client'
 
 import Modal from "./Modal"
-import useRegisterModal from "@/app/hooks/useRegisterModal"
 import Heading from "../Heading"
 import Input from "../inputs/Input"
 import Button from "../Button"
@@ -11,6 +10,8 @@ import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc"
 import { toast } from "react-hot-toast"
 import { signIn } from "next-auth/react"
+
+import useRegisterModal from "@/app/hooks/useRegisterModal"
 
 export default function RegisterModal() {
   const registerModal = useRegisterModal()
