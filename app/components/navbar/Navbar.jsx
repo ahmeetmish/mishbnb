@@ -5,6 +5,7 @@ import Logo from "./Logo"
 import NavItems from "./NavItems"
 import UserMenu from "./UserMenu"
 import Search from "./Search"
+import Categories from "./Categories"
 
 export default function Navbar({ currentUser }) {
   return (
@@ -19,6 +20,11 @@ export default function Navbar({ currentUser }) {
         </Container>
         <Search />
       </div>
+      <Container>
+        <div className="gap-2 flex items-center justify-center">
+          <Categories />
+        </div>
+      </Container>
     </div>
   )
 }
