@@ -5,15 +5,17 @@ import Heading from "../Heading"
 import Input from "../inputs/Input"
 import Button from "../Button"
 
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { useForm } from "react-hook-form"
 import { FcGoogle } from "react-icons/fc"
 import { toast } from "react-hot-toast"
 import { signIn } from "next-auth/react"
 
+import useLoginModal from "@/app/hooks/useLoginModal"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 
 export default function RegisterModal() {
+  const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -44,6 +46,11 @@ export default function RegisterModal() {
     })
   }
 
+  const handleModalSwitch = useCallback(() => {
+    registerModal.onClose()
+    loginModal.onOpen()
+  }, [loginModal, registerModal])
+
   const bodyContent = (
     <div className="gap-4 flex flex-col">
       <Heading title='Mishbnb&apos;ye Hoş Geldiniz' />
@@ -60,7 +67,7 @@ export default function RegisterModal() {
       <div className="font-light text-center mt-4 text-neutral-500">
         <div className="gap-2 flex flex-row items-center justify-center text-center">
           <div>Zaten bir hesabın var mı?</div>
-          <div onClick={registerModal.onClose} className="font-medium text-neutral-800 hover:underline cursor-pointer">Giriş Yap</div>
+          <div onClick={handleModalSwitch} className="font-medium text-neutral-800 hover:underline cursor-pointer">Giriş Yap</div>
         </div>
       </div>
     </div>

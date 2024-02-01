@@ -5,7 +5,7 @@ import Heading from "../Heading"
 import Input from "../inputs/Input"
 import Button from "../Button"
 
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { signIn } from 'next-auth/react'
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
@@ -13,10 +13,12 @@ import { FcGoogle } from "react-icons/fc"
 import { toast } from "react-hot-toast"
 
 import useLoginModal from "@/app/hooks/useLoginModal"
+import useRegisterModal from "@/app/hooks/useRegisterModal"
 
 export default function LoginModal() {
   const router = useRouter()
   const loginModal = useLoginModal()
+  const registerModal = useRegisterModal()
   const [isLoading, setIsLoading] = useState(false)
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -47,6 +49,11 @@ export default function LoginModal() {
     })
   }
 
+  const handleModalSwitch = useCallback(() => {
+    loginModal.onClose()
+    registerModal.onOpen()
+  }, [loginModal, registerModal])
+
   const bodyContent = (
     <div className="gap-4 flex flex-col">
       <Heading title='Tekrar Hoş Geldiniz' />
@@ -62,7 +69,7 @@ export default function LoginModal() {
       <div className="font-light text-center mt-4 text-neutral-500">
         <div className="gap-2 flex flex-row items-center justify-center text-center">
           <div>Hesabın yok mu?</div>
-          <div onClick={loginModal.onClose} className="font-medium text-neutral-800 hover:underline cursor-pointer">Giriş Yap</div>
+          <div onClick={handleModalSwitch} className="font-medium text-neutral-800 hover:underline cursor-pointer">Kayıt ol</div>
         </div>
       </div>
     </div>
