@@ -8,22 +8,32 @@ import { BiMenu } from "react-icons/bi"
 import { signOut } from "next-auth/react"
 import { useCallback, useState } from "react"
 
+import useRentModal from "@/app/hooks/useRentModal"
 import useLoginModal from "@/app/hooks/useLoginModal"
 import useRegisterModal from "@/app/hooks/useRegisterModal"
 
 export default function UserMenu({ currentUser }) {
-  const registerModal = useRegisterModal()
+  const rentModal = useRentModal()
   const loginModal = useLoginModal()
+  const registerModal = useRegisterModal()
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = useCallback(() => {
     setIsOpen((value) => !value)
   }, [])
 
+  const onRent = useCallback(() => {
+    if(!currentUser) {
+      return loginModal.onOpen()
+    }
+
+    rentModal.onOpen()
+  }, [loginModal, currentUser, rentModal])
+
   return (
     <div className="flex relative z-30">
       <div className="gap-3 flex flex-row items-center">
-        <div onClick={() => {}} className="hidden md:block font-medium text-sm py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
+        <div onClick={onRent} className="hidden md:block font-medium text-sm py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
           Evinizi Mishbnb'ye taşıyın
         </div>
         <div onClick={handleToggle} className="gap-3 flex flex-row items-center rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 cursor-pointer hover:shadow-lg transition">
@@ -43,7 +53,7 @@ export default function UserMenu({ currentUser }) {
                 <MenuItem onClick={() => {}} label='Mülkler' />
                 <MenuItem onClick={() => {}} label='Rezervasyonlar' />
                 <hr />
-                <MenuItem onClick={() => {}} label='Evinizi Mishbnb&apos;ye taşıyınız' />
+                <MenuItem onClick={rentModal.onOpen} label='Evinizi Mishbnb&apos;ye taşıyınız' />
                 <hr />
                 <MenuItem onClick={() => signOut().then(() => {toast.success('Çıkış yapıldı!')})} label='Oturumu kapatın' />
               </>
