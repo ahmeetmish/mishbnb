@@ -6,6 +6,7 @@ import NavItems from "./NavItems"
 import UserMenu from "./UserMenu"
 import Search from "./Search"
 import Categories from "./Categories"
+import FilterBox from "../FilterBox"
 
 export default function Navbar({ currentUser }) {
   return (
@@ -23,6 +24,7 @@ export default function Navbar({ currentUser }) {
       <Container>
         <div className="gap-2 flex items-center justify-center">
           <Categories />
+          <FilterBox />
         </div>
       </Container>
     </div>
