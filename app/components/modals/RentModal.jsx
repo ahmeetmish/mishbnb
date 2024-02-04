@@ -28,7 +28,7 @@ const STEPS = Object.freeze({
 })
 
 export default function RentModal() {
-  const router = useRouter
+  const router = useRouter()
   const rentModal = useRentModal()
 
   const [step, setStep] = useState(STEPS.CATEGORY)
@@ -99,7 +99,7 @@ export default function RentModal() {
       reset()
       setStep(STEPS.CATEGORY)
       rentModal.onClose()
-    }).catch(() => {
+    }).catch((error) => {
       toast.error('Bir şeyler ters gitti!')
     }).finally(() => {
       setIsLoading(false)
