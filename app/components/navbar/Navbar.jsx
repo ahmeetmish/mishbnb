@@ -10,7 +10,7 @@ import FilterBox from "../FilterBox"
 
 export default function Navbar({ currentUser }) {
   return (
-    <div className="fixed w-full bg-white z-100 shadow-sm">
+    <div className="fixed w-full bg-white z-50 shadow-sm">
       <div className="py-4 border-b-[1px]">
         <Container>
           <div className="gap-3 flex flex-row items-center justify-between md:gap-0">
