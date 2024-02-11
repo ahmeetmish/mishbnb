@@ -1,9 +1,13 @@
+'use client'
+
 import { HiOutlineHeart, HiHeart } from "react-icons/hi"
 
-export default function HeartButton({ listingId, currentUser }) {
-  const hasFavorited = false
+import useFavorite from "../hooks/useFavorite"
 
-  const handleFavorite = () => {}
+export default function HeartButton({ listingId, currentUser }) {
+  const { hasFavorited, handleFavorite } = useFavorite({
+    listingId, currentUser
+  })
 
   return (
     <div className="relative hover:opacity-80 cursor-pointer transition" onClick={handleFavorite}>
