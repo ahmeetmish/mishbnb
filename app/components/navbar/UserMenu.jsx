@@ -34,7 +34,7 @@ export default function UserMenu({ currentUser }) {
     <div className="flex relative z-30">
       <div className="gap-3 flex flex-row items-center">
         <div onClick={onRent} className="hidden md:block font-medium text-sm py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
-          Evinizi Mishbnb'ye taşıyın
+          Evinizi Mishbnb&apos;ye taşıyın
         </div>
         <div onClick={handleToggle} className="gap-3 flex flex-row items-center rounded-full p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 cursor-pointer hover:shadow-lg transition">
           <BiMenu size={18} />

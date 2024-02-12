@@ -124,7 +124,7 @@ export default function RentModal() {
 
   const Map = useMemo(() => dynamic(() => import('../Map'), {
     ssr: false
-  }), [location])
+  }), [])  
 
   let bodyContent = (
     <div className="gap-8 flex flex-col">
