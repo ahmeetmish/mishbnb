@@ -53,7 +53,7 @@ export default function UserMenu({ currentUser }) {
                 <MenuItem onClick={() => {}} label='Mülkler' />
                 <MenuItem onClick={() => {}} label='Rezervasyonlar' />
                 <hr />
-                <MenuItem onClick={rentModal.onOpen} label='Evinizi Mishbnb&apos;ye taşıyınız' />
+                <MenuItem onClick={rentModal.onOpen} label="Evinizi Mishbnb'ye taşıyınız" />
                 <hr />
                 <MenuItem onClick={() => signOut().then(() => {toast.success('Çıkış yapıldı!')})} label='Oturumu kapatın' />
               </>
